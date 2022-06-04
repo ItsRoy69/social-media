@@ -1,0 +1,19 @@
+.infoDetails{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+
+.infoSearch{
+    display: flex;
+    background-color: var(--inputColor);
+    border-radius: 10px;
+    padding: 5px;    
+    margin: 1px;
+}
+
+.infoSearch>input{
+    background-color: transparent;
+    border:none;
+    outline: none;
+}
