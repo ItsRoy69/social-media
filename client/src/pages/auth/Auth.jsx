@@ -13,10 +13,11 @@ const Auth = () => {
         </div>
       </div>
 
-      <LogIn/>
+      <SignUp/>
     </div>
   );
 };
+
 function LogIn() {
     return (
       <div className="a-right">
@@ -51,6 +52,7 @@ function LogIn() {
       </div>
     );
   }
+
 function SignUp() {
   return (
     <div className="a-right">

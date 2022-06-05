@@ -1,7 +1,5 @@
 import { Modal, useMantineTheme } from "@mantine/core";
 
-import "./ProfileModal.css";
-
 function ProfileModal({ modalOpened, setModalOpened }) {
   const theme = useMantineTheme();
 
@@ -21,64 +19,53 @@ function ProfileModal({ modalOpened, setModalOpened }) {
       <form className="infoForm">
         <h3>Your info</h3>
 
-        <div  className="infoDetails">
-          <div className="infoSearch">
-            <input
-              type="text"
-              className="infoInput"
-              name="FirstName"
-              placeholder="First Name"
-            />            
-          </div>
+        <div>
+          <input
+            type="text"
+            className="infoInput"
+            name="FirstName"
+            placeholder="First Name"
+          />
 
-          <div className="infoSearch">
-            <input
-              type="text"
-              className="infoInput"
-              name="LastName"
-              placeholder="Last Name"
-            />
-          </div>
+          <input
+            type="text"
+            className="infoInput"
+            name="LastName"
+            placeholder="Last Name"
+          />
         </div>
 
-        <div className="infoDetails">
-          <div className="infoSearch">
-            <input
-              type="text"
-              className="infoInput"
-              name="worksAT"
-              placeholder="Works at"
-            />
-          </div>
+        <div>
+          <input
+            type="text"
+            className="infoInput"
+            name="worksAT"
+            placeholder="Works at"
+          />
         </div>
 
-        <div className="infoDetails">
-          <div className="infoSearch">
-            <input
-              type="text"
-              className="infoInput"
-              name="livesIN"
-              placeholder="LIves in"
-            />
-          </div>
-          <div className="infoSearch">
-            <input
-              type="text"
-              className="infoInput"
-              name="Country"
-              placeholder="Country"
-            />
-          </div>
+        <div>
+          <input
+            type="text"
+            className="infoInput"
+            name="livesIN"
+            placeholder="LIves in"
+          />
+
+          <input
+            type="text"
+            className="infoInput"
+            name="Country"
+            placeholder="Country"
+          />
         </div>
 
-        <div className="infoDetails">
-          <div className="infoSearch">
-            <input
-              type="text"
-              className="infoInput"
-              placeholder="RelationShip Status"
-            />
-          </div>
+        <div>
+          <input
+            type="text"
+            className="infoInput"
+            placeholder="RelationShip Status"
+          />
         </div>
 
 
