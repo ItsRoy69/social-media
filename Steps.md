@@ -23,6 +23,7 @@ Through this website we'll learn about
 - npm i mongoose
 - npm i body-parser
 - npm i nodemon
+- npm i bcrypt
 ```
 
 Changing "package.json"
