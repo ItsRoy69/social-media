@@ -5,6 +5,10 @@ import ProfileModal from "../profileModal/ProfileModal";
 
 const InfoCard = () => {
   const [modalOpened, setModalOpened] = useState(false);
+
+
+
+  
   return (
     <div className="InfoCard">
       <div className="infoHead">

@@ -9,8 +9,12 @@ import PostRoute from './Routes/PostRoute.js'
 import UploadRoute from './routes/UploadRoute.js'
 
 // Routes
-
 const app = express();
+
+
+// to serve images inside public folder
+app.use(express.static('public')); 
+app.use('/images', express.static('images'));
 
 
 // Middleware

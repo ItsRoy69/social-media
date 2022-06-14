@@ -55,11 +55,13 @@ const PostShare = () => {
     dispatch(uploadPost(newPost));
     reset();
   }
+
+  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
   
   return (
 
     <div className="PostShare">
-      <img src={ProfileImage} alt="" />
+      <img src={user.profilePicture ? serverPublic + user.profilePicture : serverPublic + "defaultProfile.png"} alt="" />
       <div>
         <input 
         ref={desc} 
