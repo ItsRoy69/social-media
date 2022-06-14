@@ -21,6 +21,7 @@ Client Side
 - npm i redux redux-thunk react-redux
 - npm i axios
 - npm i react-router-dom
+- npm i @mantine/core
 
 ```
 
