@@ -115,9 +115,9 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
             type="text"
             className="infoInput"
             name="livesin"
-            placeholder="LIves in"
+            placeholder="Lives in"
             onChange={handleChange}
-            value={formData.livesIn}
+            value={formData.livesin}
           />
 
           <input
