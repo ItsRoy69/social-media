@@ -4,7 +4,7 @@ import { UilPen } from "@iconscout/react-unicons";
 import ProfileModal from "../profileModal/ProfileModal";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import * as UserApi from "../../api/UserRequests.js";
+import * as UserApi from "../../api/UserRequest.js";
 import { logout } from "../../actions/AuthAction";
 
 
@@ -30,7 +30,7 @@ const InfoCard = () => {
         setProfileUser(profileUser);
         console.log(profileUser)
       }
-    };
+    }
     fetchProfileUser();
   }, [user]);
 
@@ -68,7 +68,7 @@ const InfoCard = () => {
         <span>
           <b>Lives in </b>
         </span>
-        <span>{profileUser.livesIn}</span>
+        <span>{profileUser.livesin}</span>
       </div>
 
       <div className="info">

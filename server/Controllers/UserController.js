@@ -42,7 +42,7 @@ export const updateUser = async (req, res) => {
         { expiresIn: "1h" }
       );
       console.log({user, token})
-      res.status(200).json(user);
+      res.status(200).json({user, token});
     } catch (error) {
       res.status(500).json(error);
     }
