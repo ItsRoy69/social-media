@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./InfoCard.css";
 import { UilPen } from "@iconscout/react-unicons";
-import ProfileModal from "../profileModal/ProfileModal";
+import ProfileModal from "../ProfileModal/ProfileModal";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import * as UserApi from "../../api/UserRequest.js";
-import { logout } from "../../actions/AuthAction";
-
+import * as UserApi from "../../api/UserRequests.js";
+import { logout } from "../../actions/AuthActions";
 
 const InfoCard = () => {
   const dispatch = useDispatch()
@@ -16,9 +15,11 @@ const InfoCard = () => {
   const [profileUser, setProfileUser] = useState({});
   const { user } = useSelector((state) => state.authReducer.authData);
 
+
   const handleLogOut = ()=> {
     dispatch(logout())
   }
+
 
   useEffect(() => {
     const fetchProfileUser = async () => {
@@ -30,15 +31,14 @@ const InfoCard = () => {
         setProfileUser(profileUser);
         console.log(profileUser)
       }
-    }
+    };
     fetchProfileUser();
   }, [user]);
-
 
   return (
     <div className="InfoCard">
       <div className="infoHead">
-      <h4>Profile Info</h4>
+        <h4>Profile Info</h4>
         {user._id === profileUserId ? (
           <div>
             <UilPen
@@ -58,26 +58,24 @@ const InfoCard = () => {
       </div>
 
       <div className="info">
+        {/* */}
         <span>
           <b>Status </b>
         </span>
         <span>{profileUser.relationship}</span>
       </div>
-
       <div className="info">
         <span>
           <b>Lives in </b>
         </span>
-        <span>{profileUser.livesin}</span>
+        <span>{profileUser.livesIn}</span>
       </div>
-
       <div className="info">
         <span>
           <b>From </b>
         </span>
         <span>{profileUser.country}</span>
       </div>
-
       <div className="info">
         <span>
           <b>Works at </b>
@@ -85,7 +83,7 @@ const InfoCard = () => {
         <span>{profileUser.worksAt}</span>
       </div>
 
-      <button className="button logout-button" onClick={handleLogOut}>Logout</button>
+      <button className="button logout-button" onClick={handleLogOut}>Log Out</button>
     </div>
   );
 };

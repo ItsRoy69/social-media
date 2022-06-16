@@ -6,12 +6,12 @@
     border-radius: 1rem;
 }
 
+
 .PostShare>img{
     border-radius: 50%;
     width: 3rem;
     height: 3rem;
 }
-
 .PostShare>div{
     display: flex;
     flex-direction: column;
@@ -27,6 +27,10 @@
     border: none;
     outline: none;
 }
+
+
+
+
 
 .postOptions{
     display: flex;
@@ -47,16 +51,17 @@
 .option:hover{
     cursor: pointer;
 }
-
 .ps-button{
     padding: 5px;
     padding-left: 20px;
     padding-right: 20px;
-    font-size: 12px
+    font-size: 12px;
 }
+
 
 .previewImage{
     position: relative;
+    /* display: flex; */
 }
 
 .previewImage>svg{

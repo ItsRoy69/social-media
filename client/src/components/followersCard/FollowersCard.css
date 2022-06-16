@@ -1,3 +1,4 @@
+
 .FollowersCard{
     width: 100%;
     border-radius: 0.7rem;
@@ -18,6 +19,7 @@
     gap: 10px;
 }
 
+
 .followerImage{
     width: 3.2rem;
     height: 3.2rem;
@@ -35,6 +37,8 @@
     font-weight: bold;
 }
 
+
+
 .fc-button{
     height: 2rem;
     padding-left: 20px;
@@ -46,4 +50,12 @@
     border: 2px solid var(--orange);
     cursor: pointer;
     background: transparent;
+}
+
+
+.FollowersCard>span{
+    font-weight: bold;
+    color: orange;
+    align-self: center;
+    cursor: pointer;
 }

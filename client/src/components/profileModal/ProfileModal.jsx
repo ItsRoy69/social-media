@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Modal, useMantineTheme } from "@mantine/core";
+import "./ProfileModal.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { uploadImage } from "../../actions/uploadAction";
+import { uploadImage } from "../../actions/UploadAction";
 import { updateUser } from "../../actions/UserAction";
 
-function ProfileModal({ modalOpened, setModalOpened, data }) {
+const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
   const theme = useMantineTheme();
   const { password, ...other } = data;
   const [formData, setFormData] = useState(other);
@@ -15,7 +16,6 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
   const param = useParams();
 
   const { user } = useSelector((state) => state.authReducer.authData);
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -61,9 +61,7 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
     setModalOpened(false);
   };
 
-
   return (
-
     <Modal
       overlayColor={
         theme.colorScheme === "dark"
@@ -76,83 +74,81 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
       opened={modalOpened}
       onClose={() => setModalOpened(false)}
     >
-      <form className="infoForm">
-        <h3>Your info</h3>
-
+      <form className="infoForm" onSubmit={handleSubmit}>
+        <h3>Your Info</h3>
         <div>
           <input
-            type="text"
-            className="infoInput"
-            name="firstName"
-            placeholder="First Name"
-            onChange={handleChange}
             value={formData.firstname}
-          />
-
-          <input
-            type="text"
-            className="infoInput"
-            name="lastName"
-            placeholder="Last Name"
             onChange={handleChange}
+            type="text"
+            placeholder="First Name"
+            name="firstname"
+            className="infoInput"
+          />
+          <input
             value={formData.lastname}
+            onChange={handleChange}
+            type="text"
+            placeholder="Last Name"
+            name="lastname"
+            className="infoInput"
           />
         </div>
 
         <div>
           <input
-            type="text"
-            className="infoInput"
-            name="worksAt"
-            placeholder="Works at"
-            onChange={handleChange}
             value={formData.worksAt}
+            onChange={handleChange}
+            type="text"
+            placeholder="Works at"
+            name="worksAt"
+            className="infoInput"
           />
         </div>
 
         <div>
           <input
+            value={formData.livesIn}
+            onChange={handleChange}
             type="text"
-            className="infoInput"
-            name="livesin"
             placeholder="Lives in"
-            onChange={handleChange}
-            value={formData.livesin}
-          />
-
-          <input
-            type="text"
+            name="livesIn"
             className="infoInput"
-            name="country"
-            placeholder="Country"
-            onChange={handleChange}
+          />
+          <input
             value={formData.country}
+            onChange={handleChange}
+            type="text"
+            placeholder="Country"
+            name="country"
+            className="infoInput"
           />
         </div>
 
         <div>
           <input
+            value={formData.relationship}
+            onChange={handleChange}
             type="text"
             className="infoInput"
-            placeholder="RelationShip Status"
+            placeholder="Relationship status"
             name="relationship"
-            onChange={handleChange}
-            value={formData.relationship}
           />
         </div>
 
-
         <div>
-            Profile Image 
-            <input type="file" name='profileImage' onChange={onImageChange} />
-            Cover Image
-            <input type="file" name="coverImage" onChange={onImageChange} />
+          Profile image
+          <input type="file" name="profileImage" onChange={onImageChange} />
+          Cover image
+          <input type="file" name="coverImage" onChange={onImageChange} />
         </div>
 
-        <button className="button infoButton" onClick={handleSubmit} >Update</button>
+        <button className="button infoButton" type="submit">
+          Update
+        </button>
       </form>
     </Modal>
   );
-}
+};
 
 export default ProfileModal;

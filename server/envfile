@@ -1,2 +1,0 @@
-MONGO_DB = "mongodb+srv:"
-PORT = 5000
