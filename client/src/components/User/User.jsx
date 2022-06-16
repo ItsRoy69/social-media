@@ -29,7 +29,6 @@ const User = ({ person }) => {
         />
         <div className="name">
           <span>{person.firstname}</span>
-          <span>@{person.username}</span>
         </div>
       </div>
       <button
