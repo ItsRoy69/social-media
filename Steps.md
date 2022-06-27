@@ -22,6 +22,9 @@ Client Side
 - npm i axios
 - npm i react-router-dom
 - npm i @mantine/core
+- npm i timeago.js
+- npm i react-input-emoji
+
 
 ```
 
