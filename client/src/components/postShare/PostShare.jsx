@@ -6,7 +6,7 @@ import { UilLocationPoint } from "@iconscout/react-unicons";
 import { UilSchedule } from "@iconscout/react-unicons";
 import { UilTimes } from "@iconscout/react-unicons";
 import { useDispatch, useSelector } from "react-redux";
-import { uploadImage, uploadPost } from "../../actions/uploadAction";
+import { uploadImage, uploadPost } from "../../actions/UploadAction";
 
 const PostShare = () => {
   const dispatch = useDispatch();
@@ -63,7 +63,7 @@ const PostShare = () => {
     <div className="PostShare">
       <img
         src={
-          user.coverPicture
+          user.profilePicture
             ? serverPublic + user.profilePicture
             : serverPublic + "defaultProfile.png"
         }

@@ -56,7 +56,7 @@ const Auth = () => {
         <img src={Logo} alt="" />
 
         <div className="Webname">
-          <h1>RoY Media</h1>
+          <h1>ZKC Media</h1>
           <h6>Explore the ideas throughout the world</h6>
         </div>
       </div>
@@ -93,7 +93,7 @@ const Auth = () => {
             <input
               required
               type="text"
-              placeholder="Mail ID"
+              placeholder="Username"
               className="infoInput"
               name="username"
               value={data.username}
@@ -137,7 +137,7 @@ const Auth = () => {
             <span
               style={{
                 fontSize: "12px",
-                cursor: "pointer",
+                cursor: "pointer"
               }}
               onClick={() => {
                 resetForm();
