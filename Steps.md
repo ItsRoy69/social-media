@@ -26,6 +26,9 @@ Client Side
 - npm i react-input-emoji
 
 
+- npm i socket.io-client 
+
+
 ```
 
 Changing "package.json" in client
@@ -193,5 +196,57 @@ to
     "nodemon": "^2.0.16"
   }
 }
+
+```
+
+
+Socket Side 
+
+```
+- npm init
+- npm i socket.io nodemon
+
+```
+
+Changing "package.json" in socket
+
+```
+{
+  "name": "socket",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.18",
+    "socket.io": "^4.5.1"
+  }
+}
+
+```
+
+to
+
+```
+{
+  "name": "socket",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.18",
+    "socket.io": "^4.5.1"
+  }
+}
+
 
 ```

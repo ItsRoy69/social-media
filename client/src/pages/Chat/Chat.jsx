@@ -11,8 +11,10 @@ import { Link } from 'react-router-dom';
 import Home from '../../img/home.png'
 import Noti from '../../img/noti.png'
 import Comment from '../../img/comment.png'
+import { io } from 'socket.io-client';
 
 import './Chat.css'
+import { useRef } from 'react';
 
 
 
@@ -22,6 +24,27 @@ const Chat = () => {
 
     const [chats, setChats] = useState([]);  
     const [currentChat, setCurrentChat] = useState(null);
+    const [onlineUsers, setOnlineUsers] = useState([]);
+    const [sendMessage, setSendMessage] = useState(null);
+    const [receivedMessage, setReceivedMessage] = useState(null);
+    const socket = useRef()
+    
+    // Connect to Socket.io
+    useEffect(() => {
+        socket.current = io("ws://localhost:8800");
+        socket.current.emit("new-user-add", user._id);
+        socket.current.on("get-users", (users) => {
+        setOnlineUsers(users);
+        });
+    }, [user]);
+
+
+    // Send Message to socket server
+    useEffect(() => {
+        if (sendMessage!==null) {
+        socket.current.emit("send-message", sendMessage);}
+    }, [sendMessage]);
+
 
     // Get the chat in chat section
     useEffect(() => {
@@ -35,6 +58,18 @@ const Chat = () => {
         };
         getChats();
     }, [user._id]);
+
+
+    // receive message from socket server
+    useEffect(() => {
+        socket.current.on("receive-message", (data) => {
+            console.log(data)
+            setReceivedMessage(data);
+        }
+
+        );
+    }, []);
+
 
 
     return (
@@ -71,6 +106,8 @@ const Chat = () => {
                 <ChatBox
                     chat={currentChat}
                     currentUser={user._id}
+                    setSendMessage={setSendMessage}
+                    receivedMessage={receivedMessage}
                 />
             </div>
         </div>

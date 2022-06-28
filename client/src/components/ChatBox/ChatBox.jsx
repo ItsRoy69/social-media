@@ -1,18 +1,28 @@
-import React, { useEffect, useState } from 'react'
-import { getMessages } from '../../api/MessageRequest';
+import React, { useEffect, useRef, useState } from 'react'
+import { addMessage, getMessages } from '../../api/MessageRequest';
 import { getUser } from '../../api/UserRequests';
 import { format } from "timeago.js";
 import InputEmoji from "react-input-emoji";
 
-const ChatBox = ({ chat, currentUser }) => {
+const ChatBox = ({ chat, currentUser, setSendMessage, receivedMessage }) => {
 
     const [userData, setUserData] = useState(null);
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState("");
+    const scroll = useRef();
 
     const handleChange = (newMessage)=> {
       setNewMessage(newMessage)
     }
+
+    // Receive Message from parent component
+    useEffect(()=> {
+        console.log("Message Arrived: ", receivedMessage)
+        if (receivedMessage !== null && receivedMessage.chatId === chat._id) {
+            setMessages([...messages, receivedMessage]);
+    }
+  
+  },[receivedMessage])
 
     // fetching data for header
     useEffect(() => {
@@ -43,6 +53,34 @@ const ChatBox = ({ chat, currentUser }) => {
 
     if (chat !== null) fetchMessages();
   }, [chat]);
+
+    // Send Message
+    const handleSend = async(e)=> {
+        e.preventDefault()
+        const message = {
+            senderId : currentUser,
+            text: newMessage,
+            chatId: chat._id,
+        }
+        // send message to database
+        try {
+            const { data } = await addMessage(message);
+            setMessages([...messages, data]);
+            setNewMessage("");  
+        }
+        catch
+        {
+            console.log("error")
+        }
+        // send message to socket server
+        const receiverId = chat.members.find((id)=>id!==currentUser);
+        setSendMessage({...message, receiverId})
+    }
+
+    // Always scroll to last Message
+    useEffect(()=> {
+        scroll.current?.scrollIntoView({ behavior: "smooth" });
+    },[messages])
 
 
   return (
@@ -85,16 +123,16 @@ const ChatBox = ({ chat, currentUser }) => {
             <div className="chat-body" >
                 {messages.map((message) => (
                     <>
-                    <div
-                        className={
-                        message.senderId === currentUser
-                            ? "message own"
-                            : "message"
-                        }
-                    >
-                        <span>{message.text}</span>{" "}
-                        <span>{format(message.createdAt)}</span>
-                    </div>
+                        <div ref={scroll}
+                            className={
+                            message.senderId === currentUser
+                                ? "message own"
+                                : "message"
+                            }
+                        >
+                            <span>{message.text}</span>{" "}
+                            <span>{format(message.createdAt)}</span>
+                        </div>
                     </>
                 ))}
             </div>
@@ -105,7 +143,7 @@ const ChatBox = ({ chat, currentUser }) => {
                     value={newMessage}
                     onChange={handleChange}
                 />
-                <div className="send-button button" >Send</div>
+                <div className="send-button button" onClick = {handleSend}>Send</div>
             </div>
         </>
       ):(
